@@ -17,7 +17,6 @@
 </head>
 <body>
     <?php include("header.php"); ?>
-?>
 
     <main>
         <h1>Book List</h1>
