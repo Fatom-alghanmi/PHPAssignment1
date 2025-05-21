@@ -19,7 +19,8 @@
             <p>MySQL must be running.</p>
             <p>Error message: <?php echo $_SESSION["database_error"]; ?></p>
 
-            <p><a href="index.php">View Book List</a></p>
+            <a href="/booklist_manager/index.php">View Book List</a>
+
         </main>
 
         <?php include("footer.php"); ?>
