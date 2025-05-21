@@ -1,3 +1,3 @@
 <footer>
-    <h2>Copyright &copy; 2025 - All rights reserved</h2>
+  <p>© 2025 Book Manager System. All rights reserved.</p>
 </footer>

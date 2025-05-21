@@ -5,15 +5,22 @@
     scroll-behavior: smooth;
 }
 
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #94f1f4;
+    color: #014435;
+}
 main {
     font-family: 'Poppins', sans-serif;
-    background: #d67979;
+    background: #f0b9b9;
     color: #000000;
 }
 
 table {
     border-spacing: 10px;
     border-collapse: separate;
+    text-align: center;
+    border-radius: 2px solid #000;
 }
 
 td {
@@ -22,5 +29,10 @@ td {
 
 h2 {
     margin-bottom: 20px;
-    color: aqua;
+    color: rgb(255, 0, 0);
 }
+ h1 {
+    color: #000;
+    text-decoration: underline;
+    margin-bottom: 20px;
+ }
