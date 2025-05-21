@@ -4,15 +4,23 @@
     box-sizing: border-box;
     scroll-behavior: smooth;
 }
+
 main {
     font-family: 'Poppins', sans-serif;
     background: #d67979;
     color: #000000;
 }
-    table {
-        padding: 10px; 
-    }
 
-    h2 { margin-bottom: 20px;
-     color: aqua; 
-    }
+table {
+    border-spacing: 10px;
+    border-collapse: separate;
+}
+
+td {
+    padding: 10px;
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: aqua;
+}
