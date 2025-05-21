@@ -37,7 +37,8 @@
             <td><?php echo $book['genre']; ?></td>
             <td><?php echo $book['isbn']; ?></td>
             <td><?php echo $book['price']; ?></td>
-            <td><?php echo $book['published_date']; ?></td>
+            <td><?php echo $book['published_Date']; ?></td>
+
         </tr>
     <?php endforeach; ?>
 </table>
