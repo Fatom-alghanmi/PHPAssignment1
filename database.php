@@ -1,6 +1,6 @@
 <?php
     session_start();
-    $dsn = 'mysql:host=localhost;dbname=book_manager'; // <-- updated database name
+    $dsn = 'mysql:host=localhost;dbname=booklist_manager'; // <-- updated database name
     $username = 'root'; // use your DB username
     $password = '';     // use your DB password
 
