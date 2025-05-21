@@ -9,3 +9,10 @@ main {
     background: #d67979;
     color: #000000;
 }
+    table {
+        padding: 10px; 
+    }
+
+    h2 { margin-bottom: 20px;
+     color: aqua; 
+    }
