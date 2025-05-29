@@ -28,6 +28,9 @@
         <th>ISBN</th>
         <th>Price</th>
         <th>Published Date</th>
+        <th>&nbsp;</th> <!-- for edit button -->
+        <th>&nbsp;</th> <!-- for delete button -->
+
     </tr>
 
     <?php foreach ($books as $book): ?>
@@ -38,14 +41,30 @@
             <td><?php echo $book['isbn']; ?></td>
             <td><?php echo $book['price']; ?></td>
             <td><?php echo $book['published_Date']; ?></td>
-
-        </tr>
+            
+            <td><img src="<?php echo htmlspecialchars('./images/' . $book['imageName']); ?>"
+                            alt="<?php echo htmlspecialchars('./images/' . $book['imageName']); ?>" style="width:100px; height:auto;" /></td>
+            <td>
+                            <form action="update_book_form.php" method="post">
+                                <input type="hidden" name="book_id"
+                                    value="<?php echo $book['bookID']; ?>" />
+                                <input type="submit" value="Update" />
+                            </form>
+                        </td> <!-- for edit button -->
+                        <td>
+                            <form action="delete_book.php" method="post">
+                                <input type="hidden" name="book_id"
+                                    value="<?php echo $book['bookID']; ?>" />
+                                <input type="submit" value="Delete" />
+                            </form>
+                        </td> <!-- for delete button -->
+     </tr>
     <?php endforeach; ?>
 </table>
 
 
     </main>
-
+    <p><a href="add_book_form.php">Add Book</a></p>
     <?php include("footer.php"); ?>
 </body>
 
