@@ -1,5 +1,13 @@
 <?php
     session_start();
+
+    if (!isset($_SESSION["isLoggedIn"]))
+    {
+        $url = "login_form.php";
+        header("Location: " . $url);
+        die();
+    }
+
     require("database.php");
     $queryBooks = 'SELECT * FROM books';
     $statement1 = $db->prepare($queryBooks);
@@ -64,6 +72,7 @@
         </table>
     </main>
     <p><a href="add_book_form.php" class="add-book-main">Add Book</a></p>
+    <p><a href="logout.php">Logout</a></p>
 
     <?php include("footer.php"); ?>
 </body>
