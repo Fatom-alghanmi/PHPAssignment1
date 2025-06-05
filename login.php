@@ -36,7 +36,7 @@
         $_SESSION["password"] = $password;
         $_SESSION["hash"] = $hash;
 
-        $url = "index.php";
+        $url = "login_confirmation.php";
         header("Location: " . $url);
         die();
     }

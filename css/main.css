@@ -1,129 +1,90 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    scroll-behavior: smooth;
-}
-
 body {
-    font-family: 'Arial', sans-serif;
-    line-height: 1.6;
-    background: #f4f4f4;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #000;
+    background: #041755;
 }
 
-/* Main content styling */
 main {
     display: block;
-    width: 1200px;
+    width: 1250px;
     margin: 0 auto;
     padding: 1em;
-    background: #b7badf;
-    border: 2px solid navy;
-}
-/* Style only for Add Book link on main page */
-a.add-book-main {
-    display: inline-block;
-    background: #2a37cb;
-    color: #fff;
-    padding: 8px 16px;
-    text-decoration: none;
-    border-radius: 4px;
-    font-weight: bold;
-    margin-top: 20px;
-    margin-left: 230px;
+    background: #70aee5;
+    border: 2px solid #080854;
 }
 
-a.add-book-main:hover {
-    background: #7d87dc;
-}
-
-/* Headings */
-h1 {
-    color: #0c1aaf;
+h1, h2 {
+    margin-top: 0;
+    color: #f9f9f9;
     text-align: center;
 }
 
-h2, main h2 {
-    text-align: center;
-    color: #d8000c;
+label {
+    width: 10em;
+    float: left;
+    padding-right: 1em;
+    padding-bottom: .5em;
 }
 
-/* Table styling */
+#date input {
+    width: 15em;
+    float: left;
+    margin-bottom: .5em;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
-    margin: 20px 0;
+    text-align: center;
 }
 
-table th {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 2px solid #6f80e2;
-    background: #4f52b0;
-    color: #fff;
-    font-weight: bold;
+th, td {
+    padding: 10px;
+    border: 1px solid #121010;
+    vertical-align: middle;
 }
 
-table td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-    white-space: nowrap;
-    color: #333;
+#data span {
+    padding: .25em;
 }
 
-/* Update/Delete buttons */
-form input[type="submit"] {
-    display: inline-block;
-    background: #c57474;
-    color: #fff;
+#buttons input {
+    float: left;
+    background: #2b9ebe;
+    margin-bottom: .5em;
+}
+
+/* Button styling */
+.button {
+    background-color: #1c55b1;
+    color: white;
     border: none;
-    padding: 8px 12px;
+    padding: 10px 16px;
+    margin: 0 10px;
     border-radius: 4px;
     cursor: pointer;
-    font-weight: bold;
-    margin: 4px;
-}
-
-form input[type="submit"]:hover {
-    background: #a65353;
-}
-
-/* Add Book and View List buttons */
-main p a {
-    display: inline-block;
-    background: #2a37cb;
-    color: #fff;
-    padding: 8px 12px;
     text-decoration: none;
-    border-radius: 4px;
     font-weight: bold;
-    margin: 20px 10px 0 0;
+    display: inline-block;
+    transition: background-color 0.3s ease;
 }
 
-main p a:hover {
-    background: #7d87dc;
+.button:hover {
+    background-color: #154395;
 }
 
-/* Error message */
-main p.error {
-    background-color: #ffbaba;
-    color: #d8000c;
-    padding: 10px;
-    border: 1px solid #d8000c;
-    border-radius: 4px;
+/* Spacing for the action buttons */
+.action-buttons {
+    margin: 40px;
     text-align: center;
-    font-weight: bold;
-    margin-bottom: 20px;
 }
 
-/* Clear floats */
 br {
     clear: left;
 }
 
-/* Footer */
 footer {
     text-align: center;
-    margin-top: 2em;
+    padding: 1em;
+    color: #fff;
 }

@@ -2,22 +2,18 @@
 session_start();
 
 $book_id = filter_input(INPUT_POST, 'book_id', FILTER_VALIDATE_INT);
-
-// get data from the form
 $title = filter_input(INPUT_POST, 'title');
 $author = filter_input(INPUT_POST, 'author');
 $genre = filter_input(INPUT_POST, 'genre');
 $isbn = filter_input(INPUT_POST, 'isbn');
 $price = filter_input(INPUT_POST, 'price');
 $published_date = filter_input(INPUT_POST, 'published_date');
-$image_name = $_FILES['file1']['name'];
-if (empty($image_name)) {
-    $image_name = filter_input(INPUT_POST, 'existing_image');
-}
+$type_id = filter_input(INPUT_POST, 'type_id', FILTER_VALIDATE_INT);
+$image = $_FILES['image'];
 
 require_once('database.php');
 
-// Check for duplicates
+// Check for duplicate title or isbn (excluding current book)
 $queryBooks = 'SELECT * FROM books';
 $statement1 = $db->prepare($queryBooks);
 $statement1->execute();
@@ -27,55 +23,95 @@ $statement1->closeCursor();
 foreach ($books as $book) {
     if (
         ($title === $book["title"] || $isbn === $book["isbn"]) &&
-        ($book_id != $book["bookID"])
+        $book_id != $book["bookID"]
     ) {
-        $_SESSION["add_error"] = "Invalid data, Duplicate Book Title or ISBN. Try again.";
+        $_SESSION["add_error"] = "Duplicate Book Title or ISBN. Try again.";
         header("Location: error.php");
         die();
     }
 }
 
-// Check for missing fields
-if ($title == null || $author == null || $genre == null || $isbn == null || $price == null || $published_date == null) {
-    $_SESSION["add_error"] = "Invalid book data, Check all fields and try again.";
+// Validate required fields
+if (
+    $book_id === null || $book_id === false ||
+    $title === null || $author === null || $genre === null ||
+    $isbn === null || $price === null || $published_date === null ||
+    $type_id === null || $type_id === false
+) {
+    $_SESSION["add_error"] = "Invalid book data. Please fill out all fields correctly.";
     header("Location: error.php");
     die();
 }
 
-// Save new image if uploaded
-if ($_FILES['file1']['error'] == UPLOAD_ERR_OK) {
-    $source = $_FILES['file1']['tmp_name'];
-    $target = 'images/' . $image_name;
-    move_uploaded_file($source, $target);
-    require_once('image_util.php');
-    process_image('images', $image_name);
-}
+require_once('image_util.php');
 
-// Update book
-$query = 'UPDATE books
-    SET title = :title,
-        author = :author,
-        genre = :genre,
-        isbn = :isbn,
-        price = :price,
-        published_Date = :published_date,
-        imageName = :imageName
-    WHERE bookID = :bookID';
-
+// Get current image name from database
+$query = 'SELECT imageName FROM books WHERE bookID = :bookID';
 $statement = $db->prepare($query);
 $statement->bindValue(':bookID', $book_id);
+$statement->execute();
+$current = $statement->fetch();
+$current_image_name = $current['imageName'] ?? null;
+$statement->closeCursor();
+
+$image_name = $current_image_name;
+$base_dir = 'images/';
+
+if ($image && $image['error'] === UPLOAD_ERR_OK) {
+    // Delete old image files if exist
+    if ($current_image_name) {
+        $dot = strrpos($current_image_name, '_100.');
+        if ($dot !== false) {
+            $original_name = substr($current_image_name, 0, $dot) . substr($current_image_name, $dot + 4);
+            $original = $base_dir . $original_name;
+            $img_100 = $base_dir . $current_image_name;
+            $img_400 = $base_dir . substr($current_image_name, 0, $dot) . '_400' . substr($current_image_name, $dot + 4);
+
+            if (file_exists($original)) unlink($original);
+            if (file_exists($img_100)) unlink($img_100);
+            if (file_exists($img_400)) unlink($img_400);
+        }
+    }
+
+    // Upload and process new image
+    $original_filename = basename($image['name']);
+    $upload_path = $base_dir . $original_filename;
+    move_uploaded_file($image['tmp_name'], $upload_path);
+    process_image($base_dir, $original_filename);
+
+    // Save new _100 filename for database
+    $dot_position = strrpos($original_filename, '.');
+    $name_without_ext = substr($original_filename, 0, $dot_position);
+    $extension = substr($original_filename, $dot_position);
+    $image_name = $name_without_ext . '_100' . $extension;
+}
+
+// Update the book record
+$query = 'UPDATE books
+          SET title = :title,
+              author = :author,
+              genre = :genre,
+              isbn = :isbn,
+              price = :price,
+              published_date = :published_date,
+              typeID = :type_id,
+              imageName = :imageName
+          WHERE bookID = :book_id';
+
+$statement = $db->prepare($query);
+$statement->bindValue(':book_id', $book_id);
 $statement->bindValue(':title', $title);
 $statement->bindValue(':author', $author);
 $statement->bindValue(':genre', $genre);
 $statement->bindValue(':isbn', $isbn);
 $statement->bindValue(':price', $price);
 $statement->bindValue(':published_date', $published_date);
+$statement->bindValue(':type_id', $type_id);
 $statement->bindValue(':imageName', $image_name);
 $statement->execute();
 $statement->closeCursor();
 
+// Success — redirect to confirmation
 $_SESSION["bookTitle"] = $title;
-
 header("Location: update_confirmation.php");
 die();
-?>

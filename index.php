@@ -3,13 +3,16 @@
 
     if (!isset($_SESSION["isLoggedIn"]))
     {
-        $url = "login_form.php";
-        header("Location: " . $url);
+        header("Location: login_form.php");
         die();
     }
 
     require("database.php");
-    $queryBooks = 'SELECT * FROM books';
+    $queryBooks = '
+        SELECT c.*, t.bookType
+        FROM books c
+        LEFT JOIN types t ON c.typeID = t.typeID
+    ';
     $statement1 = $db->prepare($queryBooks);
     $statement1->execute();
     $books = $statement1->fetchAll();
@@ -36,6 +39,7 @@
         <th>ISBN</th>
         <th>Price</th>
         <th>Published Date</th>
+        <th>Book Type</th>
         <th>Image</th>
         <th>&nbsp;</th> <!-- for edit button -->
         <th>&nbsp;</th> <!-- for delete button -->
@@ -50,12 +54,13 @@
             <td><?php echo $book['isbn']; ?></td>
             <td><?php echo $book['price']; ?></td>
             <td><?php echo $book['published_Date']; ?></td>
+            <td><?php echo htmlspecialchars($book['bookType']); ?></td>
             
             <td><img src="<?php echo htmlspecialchars('./images/' . $book['imageName']); ?>"
                             alt="<?php echo htmlspecialchars('./images/' . $book['imageName']); ?>" style="width:100px; height:auto;" /></td>
             <td>
                             <form action="update_book_form.php" method="post"> 
-                                <input type="hidden" name="book_id"
+                                <input type="hidden" name="book_id" 
                                     value="<?php echo $book['bookID']; ?>" />
                                 <input type="submit" value="Update" />
                             </form>
@@ -70,10 +75,15 @@
      </tr>
     <?php endforeach; ?>
         </table>
-    </main>
-    <p><a href="add_book_form.php" class="add-book-main">Add Book</a></p>
-    <p><a href="logout.php">Logout</a></p>
 
+        <div class="action-buttons">
+    <a href="add_book_form.php" class="button">Add Book</a>
+    <a href="logout.php" class="button">Logout</a>
+</div>
+
+
+    </main>
+    
     <?php include("footer.php"); ?>
 </body>
 

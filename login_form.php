@@ -19,7 +19,7 @@
                     <input type="text" name="user_name" /><br />
 
                     <label>Password:</label>
-                    <input type="text" name="password" /><br />
+                    <input type="password" name="password" /><br />
 
                 </div>
 
