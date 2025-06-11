@@ -14,6 +14,7 @@
     
 
     require_once('database.php');
+
     $queryRegistrations = 'SELECT * FROM registrations';
     $statement1 = $db->prepare($queryRegistrations);
     $statement1->execute();
@@ -44,9 +45,6 @@
     else
     {        
 
-        require_once('database.php');
-
-       
         $query = 'INSERT INTO registrations
             (userName, password, emailAddress)
             VALUES
@@ -67,12 +65,12 @@
     // set up email variables
     $to_address = $email_address;
     $to_name = $user_name;
-    $from_address = 'YOUR_USERNAME@gmail.com';
-    $from_name = 'Contact Manager 2025';
-    $subject = 'Contact Manager 2025 - Registration Complete';
+    $from_address = 'fifi.202408@gmail.com';
+    $from_name = 'Book Manager 2025';
+    $subject = 'Book Manager 2025 - Registration Complete';
     $body = '<p>Thanks for registering with our site.</p>' .
         '<p>Sincerely,</p>' .
-        '<p>Contact Manager 2025</p>';
+        '<p>Book Manager 2025</p>';
     $is_body_html = true;
 
     // Send email
@@ -92,6 +90,6 @@
     // redirect to confirmation page
     $url = "register_confirmation.php";
     header("Location: " . $url);
-    die(); // releases add_book.php from memory
+    die(); // release add_book.php from memory
 
 ?>

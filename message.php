@@ -22,8 +22,8 @@
         $mail->SMTPSecure = 'tls';
         $mail->Port = 587;
         $mail->SMTPAuth = true;
-        $mail->Username = 'YOUR_USERNAME@gmail.com';
-        $mail->Password = 'YOUR_APP_PASSWORD';
+        $mail->Username = 'fifi.202408@gmail.com';
+        $mail->Password = 'zebw bjwp pzru oqcd';
 
         // Set From address, To Address, subject and body
         $mail->setFrom($from_address, $from_name);

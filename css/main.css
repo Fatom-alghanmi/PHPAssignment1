@@ -1,22 +1,85 @@
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    color: #efe3e3;
-    background: #041755;
+body {    
+    font-family: Arial, sans-serif;
+    background: #356fe5;
+    color: #090808;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.container h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.contact-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.contact-info {
+    text-align: left;
+}
+
+.contact-info p {
+    margin: 8px 0;
+    font-size: 16px;
+    color: #444;
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 10px 16px;
+    background-color: #0077cc;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+}
+
+.back-link:hover {
+    background-color: #005fa3;
 }
 
 main {
     display: block;
-    width: 1250px;
+    width: 1300px;
     margin: 0 auto;
     padding: 1em;
-    background: #70aee5;
-    border: 2px solid #080854;
+    background: rgb(88, 173, 212);
+    border: 2px solid navy;
 }
 
-h1, h2 {
+h1 {
     margin-top: 0;
-    color: #f9f9f9;
+    color: navy;
     text-align: center;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+}
+ 
+th, td {
+  padding: 10px;
+  background: #4b92cd;
+  border: 1px solid #070606;
+  text-align: center; 
+  vertical-align: middle;
 }
 
 label {
@@ -26,22 +89,10 @@ label {
     padding-bottom: .5em;
 }
 
-#date input {
-    width: 15em;
+#data input {
     float: left;
+    width: 15em;
     margin-bottom: .5em;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    text-align: center;
-}
-
-th, td {
-    padding: 10px;
-    border: 1px solid #121010;
-    vertical-align: middle;
 }
 
 #data span {
@@ -50,41 +101,89 @@ th, td {
 
 #buttons input {
     float: left;
-    background: #2b9ebe;
     margin-bottom: .5em;
 }
-
-/* Button styling */
 .button {
-    background-color: #1c55b1;
-    color: white;
-    border: none;
-    padding: 10px 16px;
-    margin: 0 10px;
-    border-radius: 4px;
+    background-color: #1c55b1;  
+    color: white;               
+    border: 2px solid #154395;  
+    padding: 12px 24px;         
+    border-radius: 6px;         
     cursor: pointer;
-    text-decoration: none;
     font-weight: bold;
+    text-decoration: none;
     display: inline-block;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    box-sizing: border-box;    
+    min-width: 120px;           
+    text-align: center;       
 }
 
 .button:hover {
     background-color: #154395;
+    border-color: #0f2c6a;
 }
 
-/* Spacing for the action buttons */
-.action-buttons {
-    margin: 40px;
-    text-align: center;
-}
 
 br {
     clear: left;
 }
 
+h2 {
+    text-align: center;
+}
+
+/* Contact Details Page Styles */
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.container h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.contact-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.contact-info {
+    text-align: left;
+}
+
+.contact-info p {
+    margin: 8px 0;
+    font-size: 16px;
+    color: #444;
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 10px 16px;
+    background: #0077cc;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+}
+
+.back-link:hover {
+    background-color: #005fa3;
+}
 footer {
     text-align: center;
-    padding: 1em;
-    color: #fff;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #000;
 }

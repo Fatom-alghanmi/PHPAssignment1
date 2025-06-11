@@ -4,13 +4,13 @@ session_start();
 require_once("database.php");
 
 // Get contact ID from GET
-$contact_id = filter_input(INPUT_POST, 'book_id', FILTER_VALIDATE_INT);
+$book_id = filter_input(INPUT_POST, 'book_id', FILTER_VALIDATE_INT);
 if (!$book_id) {
     header("Location: index.php");
     exit;
 }
 
-// Fetch contact info
+// Fetch book info
 $query = 'SELECT c.*, t.bookType FROM books c LEFT JOIN types t ON c.typeID = t.typeID WHERE bookID = :book_id';
 $statement = $db->prepare($query);
 $statement->bindValue(':book_id', $book_id);

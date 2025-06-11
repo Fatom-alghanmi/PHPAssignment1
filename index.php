@@ -40,7 +40,7 @@
                     <th>Price</th>
                     <th>Published Date</th>
                     <th>Book Type</th>
-                    <th>Image</th>
+                    <th>image</th>
                     <th>&nbsp;</th> <!-- for update -->
                     <th>&nbsp;</th> <!-- for delete -->
                     <th>&nbsp;</th> <!-- for view details -->
@@ -53,7 +53,18 @@
                         <td><?php echo htmlspecialchars($book['genre']); ?></td>
                         <td><?php echo htmlspecialchars($book['isbn']); ?></td>
                         <td><?php echo htmlspecialchars($book['price']); ?></td>
-                        <td><?php echo htmlspecialchars($book['published_Date']); ?></td>
+                        <td>
+                    <?php 
+                        $date = $book['published_Date'];  // use correct key, case-sensitive
+                        if ($date) {
+                            $dateObj = new DateTime($date);
+                            echo $dateObj->format('Y-m-d');  // or 'M d, Y' for nicer format
+                        } else {
+                            echo '';
+                        }
+                    ?>
+                </td>
+
                         <td><?php echo htmlspecialchars($book['bookType']); ?></td>
                         <td>
                             <img src="<?php echo htmlspecialchars('./images/' . $book['imageName']); ?>" 
@@ -62,27 +73,28 @@
                         <td>
                             <form action="update_book_form.php" method="post">
                                 <input type="hidden" name="book_id" value="<?php echo $book['bookID']; ?>" />
-                                <input type="submit" value="Update" />
+                                <input type="submit" value="Update" class="button" />
                             </form>
                         </td>
                         <td>
                             <form action="delete_book.php" method="post">
                                 <input type="hidden" name="book_id" value="<?php echo $book['bookID']; ?>" />
-                                <input type="submit" value="Delete" />
+                                <input type="submit" value="Delete" class="button" />
                             </form>
                         </td>
                         <td>
                             <form action="book_details.php" method="post">
                                 <input type="hidden" name="book_id" value="<?php echo $book['bookID']; ?>" />
-                                <input type="submit" value="View Details" />
+                                <input type="submit" value="View Details" class="button" />
                             </form>
                         </td>
                     </tr>
                 <?php endforeach; ?>
             </table>
 
-            <p><a href="add_book_form.php">Add Book</a></p>
-            <p><a href="logout.php">Logout</a></p>
+            <p><a href="add_book_form.php" class="back-link">Add Book</a></p>
+            <p><a href="logout.php" class="back-link">Logout</a></p>
+
         </main>
 
         <?php include("footer.php"); ?>
