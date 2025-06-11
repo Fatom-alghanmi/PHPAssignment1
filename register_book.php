@@ -65,7 +65,7 @@
     // set up email variables
     $to_address = $email_address;
     $to_name = $user_name;
-    $from_address = 'fifi.202408@gmail.com';
+    $from_address = 'YOUR_EMAIL@gmail.com';
     $from_name = 'Book Manager 2025';
     $subject = 'Book Manager 2025 - Registration Complete';
     $body = '<p>Thanks for registering with our site.</p>' .
