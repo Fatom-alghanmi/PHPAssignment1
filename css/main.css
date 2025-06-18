@@ -5,7 +5,61 @@ body {
     margin: 0;
     padding: 20px;
 }
-
+/* Nav styling */
+  
+nav {
+    width: 1300px;               /* Matches the width of <main> */
+    margin: 0 auto;              /* Centers it horizontally */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #003399;   /* Dark blue background */
+    padding: 1em;
+    color: white;
+    height: 80px;
+    position: relative;
+    z-index: 1000;
+    border: 2px solid navy;      /* Optional: for consistency with <main> */
+    border-bottom: none;         /* Avoid double border between nav and main */
+}
+ 
+.success-message {
+    background: #4691e15d;
+    color: #f8fbfc;
+    padding: 15px;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 800px;
+    text-align: center;
+    border-radius: 8px;
+    font-weight: bold;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+  }
+  
+  .nav-links a:hover {
+    text-decoration: underline;
+  }
+  
+  .nav-profile {
+    display: flex;
+    align-items: center;
+  }
+  
+  .profile-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid white;
+  }
+  
 .container {
     max-width: 600px;
     margin: 0 auto;
@@ -21,18 +75,18 @@ body {
     color: #333;
 }
 
-.contact-image {
+.book-image {
     max-width: 100%;
     height: auto;
     border-radius: 8px;
     margin-bottom: 20px;
 }
 
-.contact-info {
-    text-align: left;
+.book-info {
+    text-align: center;
 }
 
-.contact-info p {
+.book-info p {
     margin: 8px 0;
     font-size: 16px;
     color: #444;
@@ -61,6 +115,7 @@ main {
     background: rgb(88, 173, 212);
     border: 2px solid navy;
 }
+
 
 h1 {
     margin-top: 0;
@@ -135,52 +190,6 @@ h2 {
 
 /* Contact Details Page Styles */
 
-.container {
-    max-width: 600px;
-    margin: 0 auto;
-    background-color: white;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.1);
-    text-align: center;
-}
-
-.container h2 {
-    margin-bottom: 20px;
-    color: #333;
-}
-
-.contact-image {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin-bottom: 20px;
-}
-
-.contact-info {
-    text-align: left;
-}
-
-.contact-info p {
-    margin: 8px 0;
-    font-size: 16px;
-    color: #444;
-}
-
-.back-link {
-    display: inline-block;
-    margin-top: 25px;
-    padding: 10px 16px;
-    background: #0077cc;
-    color: white;
-    text-decoration: none;
-    border-radius: 6px;
-    transition: background-color 0.3s ease;
-}
-
-.back-link:hover {
-    background-color: #005fa3;
-}
 footer {
     text-align: center;
     margin-top: 20px;

@@ -1,6 +1,8 @@
 <?php
-require_once('database.php');
+
 session_start();
+require_once('database.php');
+
 
 $book_id = filter_input(INPUT_POST, 'book_id', FILTER_VALIDATE_INT);
 
